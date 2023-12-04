@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  experimental: {
+    serverActions: true,
+    reactMode: 'concurrent',
+    reactStrictMode: true,
+    reactRefresh: true,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

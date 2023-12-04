@@ -1,5 +1,5 @@
 const Todo = ({ todo }) => {
-  return <div>{todo.content}</div>;
+  return <div>{todo.constent}</div>;
 };
 
 export default Todo;
