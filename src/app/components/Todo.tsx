@@ -2,7 +2,11 @@
 import { useTransition } from 'react';
 import { completeTodo } from '../../../utils/actions';
 
-const Todo = ({ todo }) => {
+const Todo = ({
+  todo,
+}: {
+  todo: { completed: boolean; constent: String; id: string };
+}) => {
   const [isPending, startTransition] = useTransition();
 
   console.log(todo);

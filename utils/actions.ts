@@ -2,17 +2,22 @@
 import { revalidatePath } from 'next/cache';
 import db from '../utils/db';
 
-export const completeTodo = async (id) => {
+export const completeTodo = async (id: string) => {
   await db.todo.update({
     where: { id },
     data: { completed: true },
   });
 };
 
-export const newTodo = async (formData) => {
-  const todo = await db.todo.create({
-    data: { constent: formData.get('content') },
-  });
+export const newTodo = async (data: FormData) => {
+  const newTodo = data.get('todo') as string;
 
-  revalidatePath('/todos');
+  if (newTodo) {
+    await db.todo.create({
+      data: {
+        constent: newTodo,
+      },
+    });
+    revalidatePath('/todos');
+  }
 };
